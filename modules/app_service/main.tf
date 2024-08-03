@@ -9,7 +9,7 @@ resource "azurerm_app_service_plan" "asp" {
   resource_group_name = azurerm_resource_group.rg.name
   kind                = "App"
   reserved            = var.reserved
-  tags                = merge(var.default_tags, var.role_tag)
+  tags                = merge(var.default_tags, var.custom_tags)
 
   sku {
     tier = var.sku_tier
@@ -24,7 +24,7 @@ resource "azurerm_linux_web_app" "app" {
     location                        = azurerm_resource_group.rg.location
     resource_group_name             = azurerm_resource_group.rg.name
     service_plan_id                 = azurerm_app_service_plan.asp.id
-    tags                            = merge(var.default_tags, var.role_tag)
+    tags                            = merge(var.default_tags, var.custom_tags)
     public_network_access_enabled   = false
     https_only                      = true
     client_certificate_enabled      = false

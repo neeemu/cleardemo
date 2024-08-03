@@ -1,5 +1,6 @@
-env     = "qa"
-region  = "uksouth"
+env         = "qa"
+region      = "uksouth"
+region_code = "uks"
 
 # Default tags
 data_classification_tag = "Internal"
@@ -10,7 +11,7 @@ role_tag                = "Demo"
 AzDO_URL = "https://dev.azure.com/"
 
 # Specific to whole project
-project = "clearDemo"
+project = "cleardemo"
 
 # App Service Settings
 kind      = "Linux"

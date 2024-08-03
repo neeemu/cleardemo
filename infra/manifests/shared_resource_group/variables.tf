@@ -13,6 +13,11 @@ variable "region" {
   description = "The Azure Region"
 }
 
+variable "region_code" {
+  type        = string
+  description = "The short Azure Region code"
+}
+
 variable "env" {
   type        = string
   description = "The environment acronym"

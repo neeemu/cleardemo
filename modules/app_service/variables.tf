@@ -10,7 +10,7 @@ variable "asp_name" {
 }
 
 variable "default_tags" {
-  type = list(string)
+  type = map(string)
   description = "List of default tags"
 }
 
@@ -47,9 +47,9 @@ variable "app_svc_zone_redundant" {
   default     = null
 }
 
-variable "role_tag" {
-  type        = string
-  description = "role"
+variable "custom_tags" {
+  type        = map(string)
+  description = "custom tags"
 }
 
 
