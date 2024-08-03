@@ -22,8 +22,8 @@ module "as001" {
       name                = "${local.serial_prefix}as001"
       resource_group_name = data.azurerm_resource_group.shared_resource_group.name
 
-      # tags
-      default_tags = "${local.default_tags}"
+      # tag
+      default_tags = local.default_tags
       custom_tags  = {
         role = "AppService - nGinx"
       }
