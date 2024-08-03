@@ -2,8 +2,8 @@
 *.exe
 *.tfstate
 modules.json
-**\.terraform\*
-**/.terraform/*
+**\.terraform\**
+**/.terraform/**
 *.tfstate
 *.tfstate.*
 override.tf

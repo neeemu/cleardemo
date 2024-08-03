@@ -70,13 +70,6 @@ variable "custom_tags" {
   description = "custom tags"
 }
 
-
-variable "ado_token" {
-  type        = string
-  description = "The ado token from the pipeline to login to AzDO"
-  default     = "No token provided" # Help understand what went wrong
-}
-
 variable "ip_restrictions" {
   description = "IPs restrictions list map for App Service. See documentation https://www.terraform.io/docs/providers/azurerm/r/app_service.html#ip_restriction"
   type        = list(map(string))

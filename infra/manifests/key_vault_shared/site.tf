@@ -1,9 +1,15 @@
 terraform {
-  backend "azurerm" {}
-  required_version = ">= 1.0.6"
+  backend "azurerm" {
+    resource_group_name   = "piw-platform-rg"
+    storage_account_name  = "piwtfstatestr"
+    container_name        = "tfstate"
+    key                   = "terraform.tfstate.keyvault"
+    use_azuread_auth      = true
+  }
+  required_version = ">= 1.9.3"
   required_providers {
     azurerm = {
-      version = "~> 2.89.0"
+      version = "= 3.85.0"
     }
   }
 }
