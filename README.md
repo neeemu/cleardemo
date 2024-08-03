@@ -7,7 +7,7 @@
 This repo is an example of deploying an App Service using Terraform. This is not a complete working example as I didn't have time to fully finish. \
 However, I hope it demonstrates how modules can be de-coupled from configuration, as well as using loops, data sources, objects and dry(ish) code to deploy to multiple environments with one set of artifacts. \
 The repo is set up to be run via a pipeline, perhaps with a powershell or bash script to loop through the manifest folders, applying each one in turn. \
-The modules would be stored in a git (e.g. Github/Azure Devops repo), with the manifest source set to the modules repo url. The pipeline wopuld handle authentication to the repos. 
+The modules would be stored in a git (e.g. Github/Azure Devops repo), with the manifest source set to the modules repo url. The pipeline would handle authentication to the repos. 
 
 The repo is broken down into three main parts: \
     - Modules that contain the resource definitions \
@@ -23,7 +23,14 @@ I had to hard-code the IP restrictions as I was originally using a dynamic block
 
 ***Manifests (params/config)***
 
-The manifests contain the parameters that are required by the modules, seperated by resource. \
+The manifests contain the parameters that are required by the modules, seperated by resource. They follow the same pattern for every resource. \
+
+*site.tf*
+
 The site.tf contains the information for terraform init, such as azurerm version, Terraform version and remote state storage account. \
-It is configured to give each manifest it's own state file. In the past I have had a state file per instance of a resource but I couldn't remember how to do this in the time i had! \
+It is configured to give each manifest it's own state file. In the past I have had a state file per instance of a resource but I couldn't remember how to do this in the time i had!
+
+*resource-name*
+This file contains the variable names and values expected by the module, as well as the path to the source of the module (either local or remote url)
+
 

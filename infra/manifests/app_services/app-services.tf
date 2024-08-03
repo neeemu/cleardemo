@@ -1,5 +1,5 @@
 module "rg001" {
-  #source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_resource_group?ref=5.1.0"
+  #source = "git:github.com/BesQpin/cleardemo/tree/main/modules/resource_group"
   source = "C:\\Code\\cleardemo\\modules\\resource_group"
 
   name      = "${var.region_code}${var.env}${var.project}rg001"
@@ -13,7 +13,7 @@ module "rg001" {
 }
 
 module "as001" {
-  #source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_app_service?ref=7.2.0"
+  #source = "git::github.com/BesQpin/cleardemo/tree/main/modules/app_service"
   source = "C:\\Code\\cleardemo\\modules\\app_service"
 
   asp_name            = "${local.serial_prefix}001"
@@ -57,7 +57,7 @@ module "as001" {
         managed_pipeline_mode = "Integrated"
         minimum_tls_version   = "1.2"
         health_check_path     = "/"
-        ip_restrictions       = var.ip_restrictions
+        #ip_restrictions       = var.ip_restrictions
       }
     }
     app2 = {
@@ -88,7 +88,7 @@ module "as001" {
         managed_pipeline_mode = "Integrated"
         minimum_tls_version   = "1.2"
         health_check_path     = "/"
-        ip_restrictions       = var.ip_restrictions
+        #ip_restrictions       = var.ip_restrictions
       }
     }
   }
