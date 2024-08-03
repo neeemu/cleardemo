@@ -25,12 +25,31 @@ I had to hard-code the IP restrictions as I was originally using a dynamic block
 
 The manifests contain the parameters that are required by the modules, seperated by resource. They follow the same pattern for every resource. \
 
-*site.tf*
-
+*site.tf* \
 The site.tf contains the information for terraform init, such as azurerm version, Terraform version and remote state storage account. \
 It is configured to give each manifest it's own state file. In the past I have had a state file per instance of a resource but I couldn't remember how to do this in the time i had!
 
-*resource-name*
+*resource-type.tf* \
 This file contains the variable names and values expected by the module, as well as the path to the source of the module (either local or remote url)
 
+*locals.tf* \
+I used this file to build the resource names and default tags
+
+*variables* \
+Variables used by the manifests, values from the environment tfvars file
+
+***env folder - TFvars variables***
+
+The folders in here are broken down per environment, with a tfvars file in each one. This allows a single set of manifests/modules to be used across all environments, ensuring consistency and repeatablity.\
+In this example the values are mostly the same, apart from the environment code (env) and the sku of the app service plan (sku_size)\
+There is also a global tfvars file. In this example the global variables are set in each environments tfvars but the global file could be used as part of a pipeline to set variables common to all environments.\
+The pipeline would gather the tfvars files and merge them together with a script. You could even have a file for variables that are common to a region/geo.
+
+***Additional work***
+If I had more time I would of liked to implement private networking for these PaaS resources. Perhaps with an Azure Firewall or Azure Front Door to control access to and from the internet for the app services. This would enable the solution\
+to satisfy the requirments for only allowing certain types of traffic.
+The way tags have been implemented with a merge means that we can end up in a situation where we never get a clean plan, as there will always be a change. We could add the lifecycle argument ignore_changes to prevent this, although\
+it could have unintented consequences.
+The current solution doesn't have any metric logging. I would of created a Log Analytics Workspace and configured diagnostic settings for the resources to send\
+metrics data to the workspace. I could then set up alerting/auto remediation.
 

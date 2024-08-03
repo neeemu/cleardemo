@@ -12,10 +12,7 @@ project = "cleardemo"
 
 # App Service Settings
 kind      = "Linux"
-sku_tier  = "Basic"
-sku_size  = "B1"
-reserved  = true
-
+sku_size  = "F1"
 
 ip_restrictions = [
   {

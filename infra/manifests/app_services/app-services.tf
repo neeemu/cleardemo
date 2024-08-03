@@ -15,8 +15,9 @@ module "rg001" {
 module "as001" {
   #source = "git::github.com/BesQpin/cleardemo/tree/main/modules/app_service"
   source = "C:\\Code\\cleardemo\\modules\\app_service"
+  depends_on           = [module.rg001]
 
-  asp_name            = "${local.serial_prefix}001"
+  asp_name            = "${local.serial_prefix}asp001"
   sku_tier            = var.sku_tier
   sku_size            = var.sku_size
   location            = module.rg001.location

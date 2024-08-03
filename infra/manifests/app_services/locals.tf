@@ -1,9 +1,7 @@
 
 locals {
 
-  component_id = "asp"
-
-  serial_prefix = "${var.region_code}${var.env}${var.project}${local.component_id}"
+  serial_prefix = "${var.region_code}${var.env}${var.project}"
 
   # Default tags
   default_tags = {
@@ -15,7 +13,7 @@ locals {
 
   # Environment Data Defaults
   apis = {
-    demoAppService1  = "https://${var.region}${var.env}${var.project}${local.component_id}as001.azurewebsites.net"
-    demoAppService2  = "https://${var.region}${var.env}${var.project}${local.component_id}as002.azurewebsites.net"
+    demoAppService1  = "https://${var.region}${var.env}${var.project}as001.azurewebsites.net"
+    demoAppService2  = "https://${var.region}${var.env}${var.project}as002.azurewebsites.net"
   }
 }
