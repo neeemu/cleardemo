@@ -1,5 +1,5 @@
 variable "app_services" {
-  type        = map(string)
+  type        = map(map(string))
   description = "app services config to deploy"
   default     = {}
 }

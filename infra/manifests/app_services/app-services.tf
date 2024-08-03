@@ -29,7 +29,7 @@ module "as001" {
       }
 
       # azurerm_app_service
-      app_service_plan_id     = module.asp.id
+      #app_service_plan_id     = module.asp.id
       kind                    = var.kind
       https_only              = true
       create_app_service_plan = false
@@ -65,7 +65,7 @@ module "as001" {
       }
 
       # azurerm_app_service
-      app_service_plan_id     = module.asp001.id
+      #app_service_plan_id     = module.asp001.id
       kind                    = var.kind
       https_only              = true
       create_app_service_plan = false

@@ -1,5 +1,5 @@
 variable "app_services" {
-  type        = map(string)
+  type        = map(map(string))
   description = "app services config to deploy"
   default     = {}
 }
@@ -10,7 +10,7 @@ variable "asp_name" {
 }
 
 variable "default_tags" {
-  type = map(string)
+  type = list(string)
   description = "List of default tags"
 }
 
@@ -53,7 +53,7 @@ variable "app_svc_zone_redundant" {
 }
 
 variable "custom_tags" {
-  type        = map(string)
+  type        = list(string)
   description = "custom tags"
 }
 
