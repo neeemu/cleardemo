@@ -3,7 +3,7 @@ terraform {
     resource_group_name   = "piw-platform-rg"
     storage_account_name  = "piwtfstatestr"
     container_name        = "tfstate"
-    key                   = "terraform.tfstate"
+    key                   = "terraform.tfstate.rg"
     use_azuread_auth      = true
   }
   required_version = ">= 1.0.6"

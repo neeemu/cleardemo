@@ -3,7 +3,7 @@
 
 module "as001" {
   #source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_app_service?ref=7.2.0"
-  source = "C:\\Code\\cleardemo\\modules\\app_service\\"
+  source = "C:\\Code\\cleardemo\\modules\\app_service"
 
   asp_name = "${local.serial_prefix}001"
   sku_tier = var.sku_tier
@@ -16,7 +16,7 @@ module "as001" {
   custom_tags  = {
     role = "AppService - nGinx"
   }
-  role_tag = ""
+
   app_services = {
     app1 = {
       name                = "${local.serial_prefix}as001"
@@ -24,10 +24,12 @@ module "as001" {
 
       # tags
       default_tags = "${local.default_tags}"
-      #role_tag     = "AppService - nGinx"
+      custom_tags  = {
+        role = "AppService - nGinx"
+      }
 
       # azurerm_app_service
-      app_service_plan_id     = module.asp001.id
+      app_service_plan_id     = module.as001.asp.id
       kind                    = var.kind
       https_only              = true
       create_app_service_plan = false
@@ -35,12 +37,8 @@ module "as001" {
 
       app_settings = {
         PORT                                = "4000"
-        DOCKER_IMAGE                        = "DOCKER|acrem4ddave001.azurecr.io/socrates-cloud/ts-gateway:${var.typescript_socrates_gateway_artifact_version}"
-        DOCKER_REGISTRY_SERVER_URL          = "acrem4ddave001.azurecr.io"
-        DOCKER_REGISTRY_SERVER_USERNAME     = "@Microsoft.KeyVault(VaultName=${data.terraform_remote_state.key_vault.outputs.key_vault_name};SecretName=${data.azurerm_key_vault_secret.spuser001.name};SecretVersion=${data.azurerm_key_vault_secret.spuser001.version})"
-        DOCKER_REGISTRY_SERVER_PASSWORD     = "@Microsoft.KeyVault(VaultName=${data.terraform_remote_state.key_vault.outputs.key_vault_name};SecretName=${data.azurerm_key_vault_secret.sppass001.name};SecretVersion=${data.azurerm_key_vault_secret.sppass001.version})"
-        METRICS_ENABLED                     = var.metrics_enabled
-        NODE_GRAPHQL_ENDPOINTS              = local.GRAPHQL_ENDPOINTS
+        DOCKER_IMAGE                        = "DOCKER|nginx:stable-alpine3.19-otel"
+        DOCKER_REGISTRY_SERVER_URL          = "hub.docker.com"
         WEBSITES_CONTAINER_START_TIME_LIMIT = 600
       }
 
@@ -51,7 +49,7 @@ module "as001" {
         ip_restrictions       = var.network_rules_ip_rules
         managed_pipeline_mode = "Integrated"
         min_tls_version       = "1.2"
-        linux_fx_version      = "DOCKER|acrem4ddave001.azurecr.io/socrates-cloud/ts-gateway:${var.typescript_socrates_gateway_artifact_version}"
+        linux_fx_version      = "DOCKER|nginx:stable-alpine3.19-otel"
         health_check_path     = "/health"
       }
     }
@@ -61,8 +59,10 @@ module "as001" {
       resource_group_name = data.azurerm_resource_group.shared_resource_group.name
 
       # tags
-      default_tags = var.default_tags
-      #role_tag     = "AppService - nGinx"
+      default_tags = "${local.default_tags}"
+      custom_tags  = {
+        role = "AppService - nGinx"
+      }
 
       # azurerm_app_service
       app_service_plan_id     = module.asp001.id
@@ -73,12 +73,8 @@ module "as001" {
 
       app_settings = {
         PORT                                = "4000"
-        DOCKER_IMAGE                        = "DOCKER|acrem4ddave001.azurecr.io/socrates-cloud/ts-gateway:${var.typescript_socrates_gateway_artifact_version}"
-        DOCKER_REGISTRY_SERVER_URL          = "acrem4ddave001.azurecr.io"
-        DOCKER_REGISTRY_SERVER_USERNAME     = "@Microsoft.KeyVault(VaultName=${data.terraform_remote_state.key_vault.outputs.key_vault_name};SecretName=${data.azurerm_key_vault_secret.spuser001.name};SecretVersion=${data.azurerm_key_vault_secret.spuser001.version})"
-        DOCKER_REGISTRY_SERVER_PASSWORD     = "@Microsoft.KeyVault(VaultName=${data.terraform_remote_state.key_vault.outputs.key_vault_name};SecretName=${data.azurerm_key_vault_secret.sppass001.name};SecretVersion=${data.azurerm_key_vault_secret.sppass001.version})"
-        METRICS_ENABLED                     = var.metrics_enabled
-        NODE_GRAPHQL_ENDPOINTS              = local.GRAPHQL_ENDPOINTS
+        DOCKER_IMAGE                        = "DOCKER|nginx:stable-alpine3.19-otel"
+        DOCKER_REGISTRY_SERVER_URL          = "hub.docker.com"
         WEBSITES_CONTAINER_START_TIME_LIMIT = 600
       }
 
@@ -89,7 +85,7 @@ module "as001" {
         ip_restrictions       = var.network_rules_ip_rules
         managed_pipeline_mode = "Integrated"
         min_tls_version       = "1.2"
-        linux_fx_version      = "DOCKER|acrem4ddave001.azurecr.io/socrates-cloud/ts-gateway:${var.typescript_socrates_gateway_artifact_version}"
+        linux_fx_version      = "DOCKER|nginx:stable-alpine3.19-otel"
         health_check_path     = "/health"
       }
     }

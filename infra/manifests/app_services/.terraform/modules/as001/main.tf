@@ -50,7 +50,6 @@ resource "azurerm_linux_web_app" "app" {
         PORT                                = each.value.PORT
         DOCKER_IMAGE                        = each.value.DOCKER_IMAGE 
         DOCKER_REGISTRY_SERVER_URL          = each.value.DOCKER_REGISTRY_SERVER_URL
-        METRICS_ENABLED                     = each.value.var.METRICS_ENABLED
         WEBSITES_CONTAINER_START_TIME_LIMIT = each.value.WEBSITES_CONTAINER_START_TIME_LIMIT
     } 
 }

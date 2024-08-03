@@ -32,6 +32,7 @@ variable "data_classification_tag" {
   type = string
   description = "Data classification"
 }
+
 variable "role_tag" {
   type        = string
   description = "role"

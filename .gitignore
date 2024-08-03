@@ -1,2 +1,4 @@
 *.hcl
 *.exe
+*.tfstate
+modules.json

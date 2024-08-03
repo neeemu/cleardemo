@@ -47,6 +47,15 @@ variable "region" {
   description = "The Azure Region"
 }
 
+variable "region_code" {
+  type        = string
+  description = "The short Azure Region code"
+}
+
+variable "role_tag" {
+  type        = string
+  description = "role"
+}
 
 variable "env" {
   type        = string
@@ -56,16 +65,6 @@ variable "env" {
 variable "cost_center_tag" {
   type        = string
   description = "cost center"
-}
-
-variable "default_tags" {
-  type = map(string)
-  description = "List of default tags"
-}
-
-variable "custom_tags" {
-  type        = map(string)
-  description = "custom tags"
 }
 
 variable "common_tags" {
