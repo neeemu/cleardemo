@@ -1,6 +1,4 @@
 
-
-
 module "as001" {
   #source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_app_service?ref=7.2.0"
   source = "C:\\Code\\cleardemo\\modules\\app_service"
@@ -29,7 +27,7 @@ module "as001" {
       }
 
       # azurerm_app_service
-      app_service_plan_id     = module.as001.asp.id
+      app_service_plan_id     = module.asp.id
       kind                    = var.kind
       https_only              = true
       create_app_service_plan = false

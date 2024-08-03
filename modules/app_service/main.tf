@@ -1,7 +1,7 @@
-resource "azurerm_resource_group" "rg" {
-  name     = data.shared_resource_group.name
-  location = data.shared_resource_group.region
-}
+#resource "azurerm_resource_group" "rg" {
+#  name     = data.shared_resource_group.name
+#  location = data.shared_resource_group.region
+#}
 
 resource "azurerm_app_service_plan" "asp" {
   name                = var.asp_name
