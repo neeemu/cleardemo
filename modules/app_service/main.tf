@@ -5,7 +5,7 @@
 
 resource "azurerm_app_service_plan" "asp" {
   name                = var.asp_name
-  location            = azurerm_resource_group.rg.location
+  location            = var.location
   resource_group_name = azurerm_resource_group.rg.name
   kind                = "App"
   reserved            = var.reserved

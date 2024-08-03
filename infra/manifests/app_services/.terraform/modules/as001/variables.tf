@@ -20,6 +20,11 @@ variable "network_rules_ip_rules" {
   default     = []
 }
 
+variable "location" {
+  description = "The azure region to deploy the resource to"
+  type        = string
+}
+
 variable "kind" {
   description = "The kind of the App Service Plan to create. Possible values are Windows (also available as App), Linux, elastic (for Premium Consumption) and FunctionApp (for a Consumption Plan). Defaults to Windows. Changing this forces a new resource to be created."
   type        = string

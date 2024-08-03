@@ -8,6 +8,7 @@ module "as001" {
   sku_size = var.sku_size
   reserved = true
   kind     = var.kind
+  location = data.azurerm_resource_group.shared_resource_group.location
    
   #tags
   default_tags = "${local.default_tags}"
