@@ -73,6 +73,11 @@ variable "common_tags" {
   default     = {}
 }
 
+variable "data_classification_tag" {
+  type        = string
+  description = "data classification"
+}
+
 variable "ip_restrictions" {
   description = "IPs restrictions list map for App Service. See documentation https://www.terraform.io/docs/providers/azurerm/r/app_service.html#ip_restriction"
   type        = list(map(string))

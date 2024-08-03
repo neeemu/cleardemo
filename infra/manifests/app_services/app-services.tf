@@ -50,15 +50,14 @@ module "as001" {
         WEBSITES_CONTAINER_START_TIME_LIMIT = 600
       }
 
-      ip_restriction       = var.ip_restrictions
-
       site_config = {
         always_on             = true
         ftps_state            = "AllAllowed"
         http2_enabled         = true
         managed_pipeline_mode = "Integrated"
         minimum_tls_version   = "1.2"
-        health_check_path     = "/health"
+        health_check_path     = "/"
+        ip_restrictions       = var.ip_restrictions
       }
     }
     app2 = {
@@ -82,15 +81,14 @@ module "as001" {
         WEBSITES_CONTAINER_START_TIME_LIMIT = 600
       }
 
-      ip_restriction       = var.ip_restrictions
-
       site_config = {
         always_on             = true
         ftps_state            = "AllAllowed"
         http2_enabled         = true
         managed_pipeline_mode = "Integrated"
         minimum_tls_version   = "1.2"
-        health_check_path     = "/health"
+        health_check_path     = "/"
+        ip_restrictions       = var.ip_restrictions
       }
     }
   }

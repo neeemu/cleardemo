@@ -1,9 +1,5 @@
-#resource "azurerm_resource_group" "rg" {
-#  name     = data.shared_resource_group.name
-#  location = data.shared_resource_group.region
-#}
-
 resource "azurerm_service_plan" "asp" {
+
   name                = var.asp_name
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -13,6 +9,7 @@ resource "azurerm_service_plan" "asp" {
 }
 
 resource "azurerm_linux_web_app" "app" {
+
   for_each            = var.app_services
 
     name                            = each.value.name
@@ -24,12 +21,33 @@ resource "azurerm_linux_web_app" "app" {
     client_certificate_enabled      = false
 
     site_config {
+
         always_on             = each.value.site_config.always_on
-        
         ftps_state            = each.value.site_config.ftps_state
         http2_enabled         = each.value.site_config.http2_enabled
-        ip_restrictions =  var.ip_restrictions
-    
+        
+        ip_restriction {
+
+            name       = "DenyAllOthers"
+            ip_address = "0.0.0.0/0"
+            action     = "Deny"
+            priority   = 200
+        }
+        ip_restriction{
+
+            service_tag = "AzureCloud"
+            action      = "Allow"
+            priority    = "99"
+            name        = "AllowAzureCloud"
+        }
+        ip_restriction{
+
+            ip_address = "86.0.243.202/32"
+            action     = "Allow"
+            priority   = "100"
+            name       = "AllowPete"
+        }
+
         managed_pipeline_mode = each.value.site_config.managed_pipeline_mode
         minimum_tls_version   = each.value.site_config.minimum_tls_version
         health_check_path     = each.value.site_config.health_check_path
