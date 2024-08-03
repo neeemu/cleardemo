@@ -11,4 +11,3 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 .terraform.tfstate.lock.info
-C:\Code\cleardemo\infra\manifests\app_services\.terraform\**
