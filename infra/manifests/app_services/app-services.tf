@@ -2,8 +2,8 @@
 
 
 module "as001" {
-  source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_app_service?ref=7.2.0"
-  #source = "C:\\Code\\cleardemo\\modules\\app_service\\"
+  #source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_app_service?ref=7.2.0"
+  source = "C:\\Code\\cleardemo\\modules\\app_service\\"
 
   asp_name = "${local.serial_prefix}001"
   sku_tier = var.sku_tier
@@ -16,7 +16,7 @@ module "as001" {
   custom_tags  = {
     role = "AppService - nGinx"
   }
-
+  role_tag = ""
   app_services = {
     app1 = {
       name                = "${local.serial_prefix}as001"
@@ -24,7 +24,7 @@ module "as001" {
 
       # tags
       default_tags = "${local.default_tags}"
-      role_tag     = "AppService - nGinx"
+      #role_tag     = "AppService - nGinx"
 
       # azurerm_app_service
       app_service_plan_id     = module.asp001.id
@@ -62,7 +62,7 @@ module "as001" {
 
       # tags
       default_tags = var.default_tags
-      role_tag     = "AppService - nGinx"
+      #role_tag     = "AppService - nGinx"
 
       # azurerm_app_service
       app_service_plan_id     = module.asp001.id

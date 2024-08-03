@@ -65,7 +65,7 @@ variable "default_tags" {
 
 variable "custom_tags" {
   type        = map(string)
-  description = "role"
+  description = "custom tags"
 }
 
 variable "common_tags" {
