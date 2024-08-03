@@ -6,7 +6,6 @@ variable "app_services" {
       always_on             = bool
       ftps_state            = string
       http2_enabled         = bool
-      ip_restrictions       = list(map(string))
       managed_pipeline_mode = string
       minimum_tls_version   = string
       health_check_path     = string
