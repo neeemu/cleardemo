@@ -6,7 +6,7 @@
 resource "azurerm_app_service_plan" "asp" {
   name                = var.asp_name
   location            = var.location
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = var.resource_group_name
   kind                = "App"
   reserved            = var.reserved
   tags                = merge(var.default_tags, var.custom_tags)
