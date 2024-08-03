@@ -21,8 +21,8 @@ resource "azurerm_linux_web_app" "app" {
   for_each            = var.app_services
 
     name                            = each.value.name
-    location                        = azurerm_resource_group.rg.location
-    resource_group_name             = azurerm_resource_group.rg.name
+    location                        = each.value.location
+    resource_group_name             = each.value.resource_group_name
     service_plan_id                 = azurerm_app_service_plan.asp.id
     tags                            = merge(var.default_tags, var.custom_tags)
     public_network_access_enabled   = false
