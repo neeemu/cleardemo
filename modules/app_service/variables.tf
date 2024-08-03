@@ -74,3 +74,8 @@ variable "reserved" {
   type        = bool
   description = "reserved plan type"
 }
+
+variable "resource_group_name" {
+  type = string
+  description = "Name of the resource group"
+}

@@ -3,12 +3,13 @@ module "as001" {
   #source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_app_service?ref=7.2.0"
   source = "C:\\Code\\cleardemo\\modules\\app_service"
 
-  asp_name = "${local.serial_prefix}001"
-  sku_tier = var.sku_tier
-  sku_size = var.sku_size
-  reserved = true
-  kind     = var.kind
-  location = data.azurerm_resource_group.shared_resource_group.location
+  asp_name            = "${local.serial_prefix}001"
+  sku_tier            = var.sku_tier
+  sku_size            = var.sku_size
+  reserved            = true
+  kind                = var.kind
+  location            = data.azurerm_resource_group.shared_resource_group.location
+  resource_group_name = data.azurerm_resource_group.shared_resource_group.name
    
   #tags
   default_tags = "${local.default_tags}"
