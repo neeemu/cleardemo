@@ -1,9 +1,9 @@
 data "azurerm_resource_group" "shared_resource_group" {
-  name = "${var.region}${var.env}${var.project}${local.component_id}rg001"
+  name = "${var.region_code}${var.env}${var.project}rg001"
 }
 
-data "azurerm_client_config" "current" {
-}
+#data "azurerm_client_config" "current" {
+#}
 
 #data "terraform_remote_state" "key_vault" {
 #  backend = "azurerm"
@@ -18,8 +18,8 @@ data "azurerm_client_config" "current" {
 
 
 
-data "azurerm_subscription" "current" {
-}
+#data "azurerm_subscription" "current" {
+#}
 
 #data "azurerm_key_vault_secret" "appService_authorizationkey_public" {
 #  name         = "appService-${var.env}-authorizationkey-public"

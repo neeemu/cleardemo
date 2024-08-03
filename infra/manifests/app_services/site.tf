@@ -6,10 +6,10 @@ terraform {
     key                   = "terraform.tfstate.appservice"
     use_azuread_auth      = true
   }
-  required_version = ">= 1.0.6"
+  required_version = ">= 1.9.3"
   required_providers {
     azurerm = {
-      version = "~> 2.89.0"
+      version = ">= 3.110.0"
     }
   }
 }

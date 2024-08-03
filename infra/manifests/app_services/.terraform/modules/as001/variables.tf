@@ -1,5 +1,23 @@
 variable "app_services" {
-  type        = map(map(string))
+  type                = map(object({
+  name                = string
+  location            = string
+    site_config = object({
+      always_on             = bool
+      ftps_state            = string
+      http2_enabled         = bool
+      ip_restrictions       = list(map(string))
+      managed_pipeline_mode = string
+      minimum_tls_version   = string
+      health_check_path     = string
+    })
+    app_settings = object ({
+      PORT                                = string
+      DOCKER_IMAGE                        = string 
+      DOCKER_REGISTRY_SERVER_URL          = string
+      WEBSITES_CONTAINER_START_TIME_LIMIT = number
+    }) 
+  }))
   description = "app services config to deploy"
   default     = {}
 }
@@ -22,11 +40,6 @@ variable "network_rules_ip_rules" {
 
 variable "location" {
   description = "The azure region to deploy the resource to"
-  type        = string
-}
-
-variable "kind" {
-  description = "The kind of the App Service Plan to create. Possible values are Windows (also available as App), Linux, elastic (for Premium Consumption) and FunctionApp (for a Consumption Plan). Defaults to Windows. Changing this forces a new resource to be created."
   type        = string
 }
 
@@ -68,11 +81,6 @@ variable "ip_restrictions" {
   description = "IPs restrictions list map for App Service. See documentation https://www.terraform.io/docs/providers/azurerm/r/app_service.html#ip_restriction"
   type        = list(map(string))
   default     = []
-}
-
-variable "reserved" {
-  type        = bool
-  description = "reserved plan type"
 }
 
 variable "resource_group_name" {

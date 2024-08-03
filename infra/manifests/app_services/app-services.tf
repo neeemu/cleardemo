@@ -6,8 +6,6 @@ module "as001" {
   asp_name            = "${local.serial_prefix}001"
   sku_tier            = var.sku_tier
   sku_size            = var.sku_size
-  reserved            = true
-  kind                = var.kind
   location            = data.azurerm_resource_group.shared_resource_group.location
   resource_group_name = data.azurerm_resource_group.shared_resource_group.name
    
@@ -20,17 +18,14 @@ module "as001" {
   app_services = {
     app1 = {
       name                = "${local.serial_prefix}as001"
-      resource_group_name = data.azurerm_resource_group.shared_resource_group.name
-
+      location            = data.azurerm_resource_group.shared_resource_group.location
       # tag
-      default_tags = local.default_tags
+      default_tags = local.default_tags 
       custom_tags  = {
-        role = "AppService - nGinx"
+        "role" = "AppService - nGinx"
       }
 
       # azurerm_app_service
-      #app_service_plan_id     = module.asp.id
-      kind                    = var.kind
       https_only              = true
       create_app_service_plan = false
       client_cert_enabled     = false
@@ -46,27 +41,22 @@ module "as001" {
         always_on             = true
         ftps_state            = "AllAllowed"
         http2_enabled         = true
-        ip_restrictions       = var.network_rules_ip_rules
+        ip_restrictions       = var.ip_restrictions
         managed_pipeline_mode = "Integrated"
-        min_tls_version       = "1.2"
-        linux_fx_version      = "DOCKER|nginx:stable-alpine3.19-otel"
+        minimum_tls_version   = "1.2"
         health_check_path     = "/health"
       }
     }
     app2 = {
-      # common
       name                = "${local.serial_prefix}as002"
-      resource_group_name = data.azurerm_resource_group.shared_resource_group.name
-
-      # tags
-      default_tags = "${local.default_tags}"
+      location            = data.azurerm_resource_group.shared_resource_group.location
+      # tag
+      default_tags = local.default_tags 
       custom_tags  = {
-        role = "AppService - nGinx"
+        "role" = "AppService - nGinx"
       }
 
       # azurerm_app_service
-      #app_service_plan_id     = module.asp001.id
-      kind                    = var.kind
       https_only              = true
       create_app_service_plan = false
       client_cert_enabled     = false
@@ -82,10 +72,9 @@ module "as001" {
         always_on             = true
         ftps_state            = "AllAllowed"
         http2_enabled         = true
-        ip_restrictions       = var.network_rules_ip_rules
+        ip_restrictions       = var.ip_restrictions
         managed_pipeline_mode = "Integrated"
-        min_tls_version       = "1.2"
-        linux_fx_version      = "DOCKER|nginx:stable-alpine3.19-otel"
+        minimum_tls_version   = "1.2"
         health_check_path     = "/health"
       }
     }
