@@ -40,9 +40,6 @@
             <mxPoint x="294.7257208057049" y="755" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8--HhbSZYtI3ddgJnD71-9" value="Report" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDggNDgiPiYjeGE7ICAgIDxwYXRoIGZpbGw9IiM3ODkwOUMiIGQ9Ik00MCw0MUg4Yy0yLjIsMC00LTEuOC00LTRsMC0yMC45YzAtMS4zLDAuNi0yLjUsMS43LTMuM0wyNCwwbDE4LjMsMTIuOGMxLjEsMC43LDEuNywyLDEuNywzLjNWMzcgQzQ0LDM5LjIsNDIuMiw0MSw0MCw0MXoiLz4mI3hhOyAgICA8cmVjdCB4PSIxMiIgeT0iMTEiIGZpbGw9IiNmZmYiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyMiIvPiYjeGE7ICAgIDxwb2x5Z29uIGZpbGw9IiM5QzI3QjAiIHBvaW50cz0iMjQsMTMuNiAxOCwyMS40IDMwLDIxLjQiLz4mI3hhOyAgICA8cGF0aCBmaWxsPSIjQ0ZEOERDIiBkPSJNNDAsNDFIOGMtMi4yLDAtNC0xLjgtNC00bDAtMjBsMjAsMTNsMjAtMTN2MjBDNDQsMzkuMiw0Mi4yLDQxLDQwLDQxeiIvPiYjeGE7ICAgIDxwb2x5Z29uIGZpbGw9IiM5QzI3QjAiIHBvaW50cz0iMjQsMjggMjYsMjYuNyAyNiwyMCAyMiwyMCAyMiwyNi43Ii8+JiN4YTs8L3N2Zz4=;labelBackgroundColor=#ffffff;" parent="1" vertex="1">
-          <mxGeometry x="42" y="282" width="48" height="48" as="geometry" />
-        </mxCell>
         <mxCell id="qkPBm4qvjYNrrQxLSk8v-1" value="Management Subscription" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Subscriptions.svg;" vertex="1" parent="1">
           <mxGeometry x="183.15999999999997" y="414.0000000000001" width="30.68" height="49.5" as="geometry" />
         </mxCell>
@@ -263,12 +260,6 @@
         <mxCell id="qkPBm4qvjYNrrQxLSk8v-122" value="Virtual Network Gateway" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Network_Gateways.svg;" vertex="1" parent="1">
           <mxGeometry x="372.02" y="610" width="26.17" height="34.73" as="geometry" />
         </mxCell>
-        <mxCell id="qkPBm4qvjYNrrQxLSk8v-123" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sourcePerimeterSpacing=5;endArrow=none;endFill=0;targetPerimeterSpacing=5;entryX=0.028;entryY=-0.012;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.905;exitY=0.943;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="qkPBm4qvjYNrrQxLSk8v-57" target="qkPBm4qvjYNrrQxLSk8v-122">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="510" y="690" as="sourcePoint" />
-            <mxPoint x="452" y="575" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="qkPBm4qvjYNrrQxLSk8v-124" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sourcePerimeterSpacing=5;endArrow=none;endFill=0;targetPerimeterSpacing=5;entryX=0.857;entryY=0.008;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.411;exitY=1.046;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="qkPBm4qvjYNrrQxLSk8v-52" target="qkPBm4qvjYNrrQxLSk8v-122">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="520" y="700" as="sourcePoint" />
@@ -278,7 +269,7 @@
         <mxCell id="qkPBm4qvjYNrrQxLSk8v-125" value="On prem network appliances" style="image;html=1;image=img/lib/clip_art/networking/Router_128x128.png" vertex="1" parent="1">
           <mxGeometry x="550" y="827" width="70" height="58" as="geometry" />
         </mxCell>
-        <mxCell id="qkPBm4qvjYNrrQxLSk8v-130" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sourcePerimeterSpacing=5;endArrow=none;endFill=0;targetPerimeterSpacing=5;exitX=0.148;exitY=0.868;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.86;entryY=0.309;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qkPBm4qvjYNrrQxLSk8v-109" target="qkPBm4qvjYNrrQxLSk8v-146">
+        <mxCell id="qkPBm4qvjYNrrQxLSk8v-130" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sourcePerimeterSpacing=5;endArrow=none;endFill=0;targetPerimeterSpacing=5;exitX=0.48;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.478;entryY=0.079;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="qkPBm4qvjYNrrQxLSk8v-106" target="qkPBm4qvjYNrrQxLSk8v-146">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="949" y="639" as="sourcePoint" />
             <mxPoint x="831" y="630" as="targetPoint" />
