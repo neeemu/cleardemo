@@ -445,6 +445,21 @@
         <mxCell id="GG1vT4Pl_AlUqJf8N9V9-122" value="CosmosDB" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Cosmos_DB.svg;" vertex="1" parent="1">
           <mxGeometry x="228" y="106.67" width="42" height="42" as="geometry" />
         </mxCell>
+        <mxCell id="GG1vT4Pl_AlUqJf8N9V9-124" value="Alerts &amp;amp; Action Groups" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Alerts.svg;" vertex="1" parent="1">
+          <mxGeometry x="1427" y="604.76" width="44" height="36.78" as="geometry" />
+        </mxCell>
+        <mxCell id="GG1vT4Pl_AlUqJf8N9V9-125" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sourcePerimeterSpacing=5;endArrow=none;endFill=0;targetPerimeterSpacing=5;entryX=0.068;entryY=0.163;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.682;exitY=1.064;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GG1vT4Pl_AlUqJf8N9V9-105" target="GG1vT4Pl_AlUqJf8N9V9-124">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1411" y="543" as="sourcePoint" />
+            <mxPoint x="1459" y="543" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GG1vT4Pl_AlUqJf8N9V9-126" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sourcePerimeterSpacing=5;endArrow=none;endFill=0;targetPerimeterSpacing=5;exitX=0.4;exitY=0.97;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GG1vT4Pl_AlUqJf8N9V9-102" target="GG1vT4Pl_AlUqJf8N9V9-124">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1400" y="580" as="sourcePoint" />
+            <mxPoint x="1437" y="637" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
