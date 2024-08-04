@@ -60,3 +60,19 @@ resource "azurerm_linux_web_app" "app" {
         WEBSITES_CONTAINER_START_TIME_LIMIT = each.value.app_settings.WEBSITES_CONTAINER_START_TIME_LIMIT
     } 
 }
+
+resource "azurerm_web_app_backup_configuration" "backup" {
+  name                = var.app_service_name
+  resource_group_name = azurerm_resource_group.rg.name
+  web_app_name        = azurerm_app_service.app.name
+
+  storage_account_url = azurerm_storage_account.backup.primary_blob_endpoint
+  storage_account_key = azurerm_storage_account.backup.primary_access_key
+
+  schedule {
+    frequency_interval = 1
+    frequency_unit     = "Day"
+    keep_at_least_one_backup = true
+    retention_period_in_days = 30
+  }
+}

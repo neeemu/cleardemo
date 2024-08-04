@@ -18,7 +18,6 @@ module "as001" {
   depends_on           = [module.rg001]
 
   asp_name            = "${local.serial_prefix}asp001"
-  sku_tier            = var.sku_tier
   sku_size            = var.sku_size
   location            = module.rg001.location
   resource_group_name = module.rg001.name

@@ -42,11 +42,6 @@ variable "location" {
   type        = string
 }
 
-variable "sku_tier" {
-  description = "Specifies the sky tier of SKU for the App Service Plan. Changing this forces a new resource to be created."
-  type        = string
-}
-
 variable "sku_size" {
   description = "Specifies the sku size. Changing this forces a new resource to be created."
   type        = string

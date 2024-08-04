@@ -10,9 +10,9 @@ The repo is set up to be run via a pipeline, perhaps with a powershell or bash s
 The modules would be stored in a git (e.g. Github/Azure Devops repo), with the manifest source set to the modules repo url. The pipeline would handle authentication to the repos. 
 
 The repo is broken down into three main parts: \
-    - Modules that contain the resource definitions \
-    - manifests that contain the parameters required by the modules \
-    - a seperate set of variables per environment 
+- Modules that contain the resource definitions \
+- manifests that contain the parameters required by the modules \
+- a seperate set of variables per environment 
 
 ***Modules***
 
@@ -46,10 +46,11 @@ There is also a global tfvars file. In this example the global variables are set
 The pipeline would gather the tfvars files and merge them together with a script. You could even have a file for variables that are common to a region/geo.
 
 ***Additional work***
-If I had more time I would of liked to implement private networking for these PaaS resources. Perhaps with an Azure Firewall or Azure Front Door to control access to and from the internet for the app services. This would enable the solution\
-to satisfy the requirments for only allowing certain types of traffic.
-The way tags have been implemented with a merge means that we can end up in a situation where we never get a clean plan, as there will always be a change. We could add the lifecycle argument ignore_changes to prevent this, although\
+- If I had more time I would of liked to implement private networking for these PaaS resources. Perhaps with an Azure Firewall or Azure Front Door to control access to and from the internet for the app services. This would enable the solution\
+to satisfy the requirments for only allowing certain types of traffic. \
+- I would of liked to have deployed a Key Vault to manage secrets, certificates and keys.
+- The way tags have been implemented with a merge means that we can end up in a situation where we never get a clean plan, as there will always be a change. We could add the lifecycle argument ignore_changes to prevent this, although\
 it could have unintented consequences.
-The current solution doesn't have any metric logging. I would of created a Log Analytics Workspace and configured diagnostic settings for the resources to send\
+- The current solution doesn't have any metric logging. I would of created a Log Analytics Workspace and configured diagnostic settings for the resources to send\
 metrics data to the workspace. I could then set up alerting/auto remediation.
 
