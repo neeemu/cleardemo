@@ -6,6 +6,7 @@ variable "app_services" {
       always_on             = bool
       ftps_state            = string
       http2_enabled         = bool
+      linux_fx_version      = string
       managed_pipeline_mode = string
       minimum_tls_version   = string
       health_check_path     = string
@@ -15,6 +16,9 @@ variable "app_services" {
       DOCKER_IMAGE                        = string 
       DOCKER_REGISTRY_SERVER_URL          = string
       WEBSITES_CONTAINER_START_TIME_LIMIT = number
+      DOCKER_ENABLE_CI                    = bool
+      #DOCKER_REGISTRY_SERVER_PASSWORD    = dockerhubPassword
+      DOCKER_REGISTRY_SERVER_USERNAME     = string
     }) 
   }))
   description = "app services config to deploy"
@@ -23,11 +27,11 @@ variable "app_services" {
 
 variable "asp_name" {
   description = "name of the app service plan"
-  type = string
+  type        = string
 }
 
 variable "default_tags" {
-  type = map(string)
+  type        = map(string)
   description = "List of default tags"
 }
 
@@ -71,6 +75,6 @@ variable "ip_restrictions" {
 }
 
 variable "resource_group_name" {
-  type = string
+  type        = string
   description = "Name of the resource group"
 }

@@ -1,5 +1,5 @@
 module "rg001" {
-  #source = "git:github.com/BesQpin/cleardemo/tree/main/modules/resource_group"
+  #source = "git::https://github.com/BesQpin/tf-resource_group-module.git"
   source = "C:\\Code\\cleardemo\\modules\\resource_group"
 
   name      = "${var.region_code}${var.env}${var.project}rg001"
@@ -12,9 +12,33 @@ module "rg001" {
   }
 }
 
+
+module "str001" {
+  #source = "git::https://github.com/BesQpin/tf-storage_account-module.git"
+  source = "C:\\Code\\cleardemo\\modules\\storage_account"
+
+  name                  = "${var.region_code}${var.env}${var.project}str001"
+  location              = var.region
+  resource_group_name   = module.rg001.name
+
+  account_tier              = "Standard"
+  account_replication_type  = "LRS"
+
+  storage_container_name    = "${var.region_code}${var.env}${var.project}str001bkp"
+  container_access_type     = "private"
+
+  # tags
+  default_tags = "${local.default_tags}"
+  custom_tags  = {
+    role = "AppService - Backup storage"
+  }
+}
+
+
 module "as001" {
-  #source = "git::github.com/BesQpin/cleardemo/tree/main/modules/app_service"
+  #source = "git::https://github.com/BesQpin/tf-app_service-module.git"
   source = "C:\\Code\\cleardemo\\modules\\app_service"
+
   depends_on           = [module.rg001]
 
   asp_name            = "${local.serial_prefix}asp001"
@@ -45,9 +69,12 @@ module "as001" {
 
       app_settings = {
         PORT                                = "4000"
-        DOCKER_IMAGE                        = "DOCKER|nginx:stable-alpine3.19-otel"
+        DOCKER_IMAGE                        = "DOCKER|BesQpin/nginx:stable-alpine3.19-otel"
         DOCKER_REGISTRY_SERVER_URL          = "hub.docker.com"
         WEBSITES_CONTAINER_START_TIME_LIMIT = 600
+        DOCKER_ENABLE_CI                    = true
+        #DOCKER_REGISTRY_SERVER_PASSWORD    = each.value.DOCKER_REGISTRY_SERVER_PASSWORD
+        DOCKER_REGISTRY_SERVER_USERNAME     = "BesQpin"
       }
 
       site_config = {
@@ -58,6 +85,7 @@ module "as001" {
         minimum_tls_version   = "1.2"
         health_check_path     = "/"
         #ip_restrictions       = var.ip_restrictions
+        linux_fx_version      = "DOCKER|BesQpin/nginx:stable-alpine3.19-otel"
       }
     }
     app2 = {
@@ -76,9 +104,12 @@ module "as001" {
 
       app_settings = {
         PORT                                = "4000"
-        DOCKER_IMAGE                        = "DOCKER|nginx:stable-alpine3.19-otel"
+        DOCKER_IMAGE                        = "DOCKER|BesQpin/nginx:stable-alpine3.19-otel"
         DOCKER_REGISTRY_SERVER_URL          = "hub.docker.com"
         WEBSITES_CONTAINER_START_TIME_LIMIT = 600
+        DOCKER_ENABLE_CI                    = true
+        #DOCKER_REGISTRY_SERVER_PASSWORD    = "key vault reference"
+        DOCKER_REGISTRY_SERVER_USERNAME     = "BesQpin"
       }
 
       site_config = {
@@ -89,6 +120,7 @@ module "as001" {
         minimum_tls_version   = "1.2"
         health_check_path     = "/"
         #ip_restrictions       = var.ip_restrictions
+        linux_fx_version      = "DOCKER|BesQpin/nginx:stable-alpine3.19-otel"
       }
     }
   }

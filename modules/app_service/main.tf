@@ -4,8 +4,8 @@ resource "azurerm_service_plan" "asp" {
   location            = var.location
   resource_group_name = var.resource_group_name
   tags                = merge(var.default_tags, var.custom_tags)
-  sku_name = var.sku_size
-  os_type = "Linux"
+  sku_name            = var.sku_size
+  os_type             = "Linux"
 }
 
 resource "azurerm_linux_web_app" "app" {
@@ -51,28 +51,34 @@ resource "azurerm_linux_web_app" "app" {
         managed_pipeline_mode = each.value.site_config.managed_pipeline_mode
         minimum_tls_version   = each.value.site_config.minimum_tls_version
         health_check_path     = each.value.site_config.health_check_path
+        linux_fx_version      = each.value.site_config.linux_fx_version
     }
     
     app_settings = {
         PORT                                = each.value.app_settings.PORT
         DOCKER_IMAGE                        = each.value.app_settings.DOCKER_IMAGE 
-        DOCKER_REGISTRY_SERVER_URL          = each.value.app_settings.DOCKER_REGISTRY_SERVER_URL
         WEBSITES_CONTAINER_START_TIME_LIMIT = each.value.app_settings.WEBSITES_CONTAINER_START_TIME_LIMIT
+        DOCKER_ENABLE_CI                    = each.value.DOCKER_ENABLE_CI
+        #DOCKER_REGISTRY_SERVER_PASSWORD    = each.value.DOCKER_REGISTRY_SERVER_PASSWORD
+        DOCKER_REGISTRY_SERVER_URL          = each.value.app_settings.DOCKER_REGISTRY_SERVER_URL
+        DOCKER_REGISTRY_SERVER_USERNAME     = each.value.app_settings.DOCKER_REGISTRY_SERVER_USERNAME
     } 
 }
 
 resource "azurerm_web_app_backup_configuration" "backup" {
-  name                = var.app_service_name
-  resource_group_name = azurerm_resource_group.rg.name
-  web_app_name        = azurerm_app_service.app.name
+    for_each    = var.app_services
 
-  storage_account_url = azurerm_storage_account.backup.primary_blob_endpoint
-  storage_account_key = azurerm_storage_account.backup.primary_access_key
+        name                = "${each.value.name} Backup"
+        resource_group_name = azurerm_service_plan.asp.resource_group_name
+        web_app_name        = each.value.name
 
-  schedule {
-    frequency_interval = 1
-    frequency_unit     = "Day"
-    keep_at_least_one_backup = true
-    retention_period_in_days = 30
-  }
+        storage_account_url = azurerm_storage_account.backup.primary_blob_endpoint
+        storage_account_key = azurerm_storage_account.backup.primary_access_key
+
+        schedule {
+            frequency_interval = 1
+            frequency_unit     = "Day"
+            keep_at_least_one_backup = true
+            retention_period_in_days = 30
+        }
 }

@@ -1,5 +1,5 @@
 module "rg001" {
-  #source = "git::https://dev.azure.com/Specsavers/DevOpsEngineering/_git/tfmodule-azurerm_resource_group?ref=5.1.0"
+  #source = "git::https://github.com/BesQpin/tf-resource_group-module.git"
   source = "C:\\Code\\cleardemo\\modules\\resource_group"
 
   name      = "${local.serial_prefix}001"
